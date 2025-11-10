@@ -9,13 +9,6 @@
 - Analyze audience roles and rank relevance to Ideal Customer Profile (ICP)
 - Comment sentiment analysis for audience feedback
 - Interactive dashboard with visualizations
-  
-**Try it locally:**
-```bash
-git clone https://github.com/AatifaRizvi
-cd Wavess-1.0
-pip install -r requirements.txt
-streamlit run linkedin_analysis_app.py
 
 **Data**
 The project uses three datasets:
@@ -50,4 +43,14 @@ Integrate machine learning models for post performance prediction
 Add a content recommendation engine for optimal hashtags and format
 Real-time alerts for posts exceeding performance thresholdsLicense
 
+**Try it locally:**
+```bash
+git clone https://github.com/AatifaRizvi
+cd Wavess-1.0
+pip install -r requirements.txt
+streamlit run linkedin_analysis_app.py
+
 MIT License © [2025] [Aatifa Rizvi]
+
+
+
