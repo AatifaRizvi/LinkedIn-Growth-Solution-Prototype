@@ -5,4 +5,5 @@ textblob
 matplotlib
 altair
 requests
+plotly
 rich>=13.7.0
