@@ -7,14 +7,13 @@ import requests
 import re
 import uuid
 
-# ---------------------- PAGE CONFIG ----------------------
+# PAGE CONFIG
 st.set_page_config(
     page_title="Wavess 1.0 - LinkedIn Growth Solution",
     layout="wide",
-    page_icon="🌊"
 )
 
-# ---------------------- HELPER: LOTTIE LOADER ----------------------
+# HELPER
 def load_lottie(url):
     try:
         r = requests.get(url)
@@ -26,14 +25,14 @@ def load_lottie(url):
 
 wave_animation = load_lottie("https://assets7.lottiefiles.com/packages/lf20_4kx2q32n.json")
 
-# ---------------------- HEADER SECTION ----------------------
+# HEADER SECTION 
 col1, col2 = st.columns([0.75, 0.25])
 with col1:
     st.markdown("""
         <div style="
             background: linear-gradient(90deg, #007BFF, #00C9A7);
             padding: 20px; border-radius: 15px; color: white;">
-            <h1 style="margin:0;">🌊 Wavess 1.0: LinkedIn Growth Solution</h1>
+            <h1 style="margin:0;"> Wavess 1.0: LinkedIn Growth Solution</h1>
             <p style="margin-top:5px;">Analyze post performance, audience relevance & engagement sentiment</p>
         </div>
     """, unsafe_allow_html=True)
@@ -47,28 +46,28 @@ with col2:
 
 st.write("")
 
-# ---------------------- LOAD DATA ----------------------
+# LOAD DATA
 try:
     posts = pd.read_csv("data/linkedin_post.csv")
     audience = pd.read_csv("data/audience_data.csv")
     comments = pd.read_csv("data/comments_data.csv")
 except FileNotFoundError:
-    st.error("❌ Data files missing. Please ensure `data/` folder contains all CSV files.")
+    st.error("Data files missing. Please ensure `data/` folder contains all CSV files.")
     st.stop()
 
-# ---------------------- POST OVERVIEW ----------------------
-st.header("📊 Post Overview")
+# POST OVERVIEW
+st.header("Post Overview")
 col1, col2 = st.columns(2)
 
 with col1:
     st.dataframe(posts[['post_id', 'likes', 'comments', 'shares']], use_container_width=True)
 
 with col2:
-    st.subheader("📝 Post Content")
+    st.subheader(" Post Content")
     post_text = posts.loc[0, 'post_text'] if len(posts) > 0 else ""
     st.write(post_text)
 
-# ---------------------- POST SENTIMENT ----------------------
+# POST SENTIMENT
 blob = TextBlob(post_text)
 post_sentiment = blob.sentiment.polarity
 post_sentiment_label = (
@@ -89,29 +88,29 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------------- HASHTAG & KEYWORD INSIGHTS ----------------------
-st.subheader("🔍 Hashtag & Keyword Insights")
+# HASHTAG & KEYWORD INSIGHTS
+st.subheader(" Hashtag & Keyword Insights")
 hashtags = re.findall(r"#\w+", post_text)
 keywords = [w.lower() for w in re.findall(r"\b\w+\b", post_text) if len(w) > 4]
 
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown("### ➤ Hashtags Found")
+    st.markdown("###  Hashtags Found")
     if hashtags:
         st.write(", ".join(hashtags))
     else:
         st.info("No hashtags found in this post.")
 
 with col2:
-    st.markdown("### ➤ Common Keywords")
+    st.markdown("### Common Keywords")
     if keywords:
         keyword_counts = pd.Series(keywords).value_counts().head(5)
         st.dataframe(keyword_counts.rename_axis("Keyword").reset_index(name="Frequency"))
     else:
         st.warning("No significant keywords detected.")
 
-# ---------------------- ENGAGEMENT VISUALIZATION ----------------------
-st.subheader("📈 Engagement Metrics")
+# ENGAGEMENT VISUALIZATION
+st.subheader("Engagement Metrics")
 engagement_data = posts.loc[0, ['likes', 'comments', 'shares']]
 engagement_df = pd.DataFrame({
     'Metric': ['Likes', 'Comments', 'Shares'],
@@ -127,7 +126,7 @@ fig_engagement.update_traces(textposition='outside')
 fig_engagement.update_layout(showlegend=False, template="plotly_dark")
 st.plotly_chart(fig_engagement, use_container_width=True)
 
-# ---------------------- COMMENT SENTIMENT ANALYSIS ----------------------
+# COMMENT SENTIMENT ANALYSIS
 st.header("💬 Comment Sentiment Analysis")
 comments["sentiment"] = comments["comment_text"].apply(lambda x: TextBlob(str(x)).sentiment.polarity)
 avg_comment_sentiment = comments["sentiment"].mean()
@@ -149,8 +148,8 @@ with col2:
     )
     st.plotly_chart(fig_comments, use_container_width=True)
 
-# ---------------------- AUDIENCE ICP RELEVANCE ----------------------
-st.header("👥 Audience ICP Relevance")
+# AUDIENCE ICP RELEVANCE
+st.header("Audience ICP Relevance")
 
 def map_role_to_field(role):
     role = str(role).lower()
@@ -189,10 +188,10 @@ with col2:
     fig_audience.update_layout(template="plotly_dark")
     st.plotly_chart(fig_audience, use_container_width=True)
 
-st.success(f"✅ Top audience field: **{top_field}** — showing strongest interest from professionals here.")
+st.success(f" Top audience field: **{top_field}** — showing strongest interest from professionals here.")
 
-# ---------------------- BEST PERFORMING POST ----------------------
-st.header("🏆 Predicting Best-Performing Post")
+# BEST PERFORMING POST 
+st.header(" Predicting Best-Performing Post")
 posts["engagement_score"] = posts["likes"]*0.5 + posts["comments"]*0.3 + posts["shares"]*0.2
 best_post = posts.loc[posts["engagement_score"].idxmax()]
 
@@ -207,8 +206,8 @@ st.plotly_chart(fig_score, use_container_width=True)
 
 st.caption("This section is for demo view only — can be extended to compare multiple posts.")
 
-# ---------------------- SUMMARY ----------------------
-st.header("🧾 Final Summary")
+# SUMMARY
+st.header(" Final Summary")
 st.markdown(f"""
 - **Post Sentiment:** {post_sentiment_label}  
 - **Avg Comment Sentiment:** {round(avg_comment_sentiment,2)}  
@@ -217,8 +216,8 @@ st.markdown(f"""
 - **Best Performing Post ID:** {best_post['post_id']}  
 """)
 
-# ---------------------- FUTURE SCOPE ----------------------
-st.header("🔮 Automation & Future Scope")
+# FUTURE SCOPE
+st.header(" Automation & Future Scope")
 st.markdown("""
 - Connect dashboard to **LinkedIn API** to fetch live posts, comments & metrics.
 - Automate data refresh using **Airflow** or **Streamlit Schedule**.
@@ -227,4 +226,4 @@ st.markdown("""
 - Integrate a **post recommender system** for optimal hashtags & content.
 """)
 
-st.success("✨ Analysis Complete — Wavess 1.0 Prototype Ready!")
+st.success("Analysis Complete — Wavess 1.0 Prototype!")
