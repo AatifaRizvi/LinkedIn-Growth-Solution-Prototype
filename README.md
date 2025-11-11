@@ -13,9 +13,9 @@
 **Data**
 The project uses three datasets:
 
-linkedin_post.csv – Post details including text, likes, comments, shares
-comments_data.csv – Post comments for sentiment analysis
-audience_data.csv – Audience roles, seniority, and relevance to ICP
+-> linkedin_post.csv – Post details including text, likes, comments, shares
+-> comments_data.csv – Post comments for sentiment analysis
+-> audience_data.csv – Audience roles, seniority, and relevance to ICP
 
 Note: Replace with live LinkedIn data when integrating LinkedIn API.
 
