@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 streamlit
 pandas
 textblob
 plotly
 requests
 streamlit-lottie
+=======
+streamlit
+pandas
+textblob
+plotly
+requests
+streamlit-lottie
+>>>>>>> dec1493aaf7a5de7ddb63f3cdd0d21fc9677e056
