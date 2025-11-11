@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import streamlit as st
 import pandas as pd
 from textblob import TextBlob
@@ -392,4 +391,3 @@ For more, you can visit the pdf provided.
 """)
 
 st.success("Analysis Complete for demo/prototype!")
->>>>>>> dec1493aaf7a5de7ddb63f3cdd0d21fc9677e056
