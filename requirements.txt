@@ -1,8 +1,23 @@
+# Core Framework
 streamlit==1.25.0
+
+# Data Handling
 pandas==2.1.4
 numpy==1.26.3
+
+# Visualization
 plotly==5.18.0
+
+# Text & Sentiment Analysis
 textblob==0.17.1
-requests==2.31.0
 regex==2023.10.3
+
+# API & Utility
+requests==2.31.0
+
+# UI & Display Enhancements
 rich==13.7.0
+Pygments==2.19.2
+markdown-it-py==3.0.0
+mdurl==0.1.2
+streamlit-lottie==0.0.5
