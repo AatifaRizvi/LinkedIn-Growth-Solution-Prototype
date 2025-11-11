@@ -1,0 +1,6 @@
+streamlit
+pandas
+textblob
+plotly
+requests
+streamlit-lottie
