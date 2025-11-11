@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-streamlit
-pandas
-textblob
-plotly
-requests
-streamlit-lottie
-=======
-streamlit
-pandas
-textblob
-plotly
-requests
-streamlit-lottie
->>>>>>> dec1493aaf7a5de7ddb63f3cdd0d21fc9677e056
+streamlit==1.25.0
+pandas==2.1.1
+textblob==0.17.1
+plotly==5.16.1
+requests==2.31.0
+nltk==3.8.1
+rich==14.2.0
+markdown-it-py==4.0.0
+pygments==2.19.2
+mdurl==0.1.2
