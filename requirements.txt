@@ -1,3 +1,4 @@
+pip==25.3
 streamlit==1.25.0
 pandas==2.1.1
 textblob==0.17.1
